@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\company;
+use DB;
 class companyController extends Controller
 {
     /**
@@ -81,6 +82,8 @@ class companyController extends Controller
     public function edit($id)
     {
         //
+        $company=company::find($id);
+        return view('company/edit',compact('company'));
     }
 
     /**
@@ -90,9 +93,17 @@ class companyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+        $updating=DB::table('companies')->where('id',$request->input('id'))->update([
+            'name'=>$request->input('name'),
+            'email'=>$request->input('email'),
+            'website'=>$request->input('website'),
+
+        ]);
+        return redirect('/displayCompanies');
+
     }
 
     /**
@@ -101,8 +112,18 @@ class companyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
+    public function delete($id)
+    {
+        $company=company::find($id);
+        return view('company/delete',compact('company'));
+    }
     public function destroy($id)
     {
         //
+        $company=company::find($id);
+        $company->delete();
+        return redirect('/displayCompanies');
     }
+   
 }

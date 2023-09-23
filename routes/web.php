@@ -21,3 +21,7 @@ Route::get('/', function () {
 Route::get('/addCompanies',[companyController::class, 'create']);
 Route::post('/newCompanies',[companyController::class, 'store']);
 Route::get('/displayCompanies',[companyController::class, 'show']);
+Route::get('/editCompanies/{id}',[companyController::class, 'edit']);
+Route::post('/editCompanies/update',[companyController::class, 'update']);
+Route::get('/deleteCompanies/{id}',[companyController::class, 'delete']);
+Route::post('/destroy/{id}',[companyController::class, 'destroy']);
