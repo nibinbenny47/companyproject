@@ -65,7 +65,7 @@ class employeeController extends Controller
         $employee->company_id=$getcompany_id;
 
         $employee->save();
-        return view('company/create');
+        return redirect('/displayEmployees');
     }
 
     /**
@@ -90,6 +90,9 @@ class employeeController extends Controller
     public function edit($id)
     {
         //
+        $employee=employee::find($id);
+        $company=company::all();
+        return view('employees/edit',compact('employee','company'));
     }
 
     /**
@@ -99,9 +102,19 @@ class employeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+        $updating=DB::table('employees')->where('id',$request->input('id'))->update([
+            'firstname'=>$request->input('firstname'),
+            'lastname'=>$request->input('lastname'),
+            'email'=>$request->input('email'),
+            'phone'=>$request->input('phone'),
+            'company_id'=>$request->input('company_id'),
+
+        ]);
+        return redirect('/displayEmployees');
+
     }
 
     /**
@@ -110,8 +123,16 @@ class employeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function delete($id)
+    {
+        $employee=employee::find($id);
+        return view('employees/delete',compact('employee'));
+    }
     public function destroy($id)
     {
         //
+        $employee=employee::find($id);
+        $employee->delete();
+        return redirect('/displayEmployees');
     }
 }

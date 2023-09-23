@@ -9,6 +9,8 @@
 </head>
 
 <body>
+@include('header')
+
     <h1>Employee registration</h1>
     <form action="/newEmployees" method="post">
         {{ csrf_field() }}

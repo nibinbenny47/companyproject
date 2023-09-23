@@ -57,7 +57,8 @@ class companyController extends Controller
         $company->website=$getwebsite;
 
         $company->save();
-        return view('company/create');
+        return redirect('/displayCompanies');
+
     }
 
     /**
@@ -112,7 +113,7 @@ class companyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+
     public function delete($id)
     {
         $company=company::find($id);

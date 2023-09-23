@@ -23,7 +23,8 @@
             <td>{{$employee->email}}</td>
             <td>{{$employee->phone}}</td>
             <td>{{$employee->company->name}}</td>
-            
+            <td><a href="/editEmployees/{{$employee->id}}">Edit</a></td>
+            <td><a href="/deleteEmployees/{{$employee->id}}">Delete</a></td>
         </tr>
         @endforeach
         
