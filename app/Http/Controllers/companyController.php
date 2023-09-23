@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\company;
 class companyController extends Controller
 {
     /**
@@ -14,7 +14,7 @@ class companyController extends Controller
     public function index()
     {
         //
-        
+
 
     }
 
@@ -26,6 +26,7 @@ class companyController extends Controller
     public function create()
     {
         //
+        return view('company/create');
     }
 
     /**
@@ -37,6 +38,25 @@ class companyController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,[
+            'name'=>'required',
+            'email'=>'required',
+            'website'=>'required',
+            
+        ]);
+  
+        $getname=request('name');
+        $getemail=request('email');
+        $getwebsite=request('website');
+      
+  
+        $company=new company();
+        $company->name=$getname;
+        $company->email=$getemail;
+        $company->website=$getwebsite;
+
+        $company->save();
+        return view('company/create');
     }
 
     /**
@@ -45,9 +65,11 @@ class companyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(company $company)
     {
         //
+        $company=company::all();
+        return view('company/index',compact('company'));
     }
 
     /**
