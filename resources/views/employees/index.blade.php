@@ -7,14 +7,16 @@
     <title>Document</title>
 </head>
 <body>
+@include('header')
     <h1>Employee details</h1>
-    <table>
+    <table class="table">
         <tr>
-            <td>First name</td>
-            <td>Last name</td>
-            <td>Email</td>
-            <td>Phone</td>
-            <td>Company</td>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Company</th>
+            <th>Actions</th>
         </tr>
         @foreach($employee as $employee)
         <tr>

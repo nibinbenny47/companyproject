@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+@include('header')
     <h1>Edit Company</h1>
     <form action="update" method="post">
         @csrf

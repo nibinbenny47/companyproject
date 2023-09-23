@@ -17,16 +17,19 @@
         <table>
             <tr>
                 <td>Name</td>
-                <td><input type="text" name="name" value="{{old('name')}}"></td>
+                <td><input type="text" name="name" placeholder="enter name" value="{{old('name')}}"></td>
+                <td><span style="color:red">@error('name'){{$message}}@enderror</span></td>
             </tr>
 
             <tr>
                 <td>Email</td>
-                <td><input type="text" name="email" value="{{old('email')}}"></td>
+                <td><input type="email" name="email" placeholder="enter email" value="{{old('email')}}"></td>
+                <td><span style="color:red">@error('email'){{$message}}@enderror</span></td>
             </tr>
             <tr>
                 <td>Website</td>
-                <td><input type="text" name="website" value="{{old('website')}}"></td>
+                <td><input type="text" name="website" placeholder="enter website" value="{{old('website')}}"></td>
+                <td><span style="color:red">@error('website'){{$message}}@enderror</span></td>
             </tr>
 
             <tr>

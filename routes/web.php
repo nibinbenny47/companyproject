@@ -16,7 +16,7 @@ use App\Http\Controllers\employeeController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('company/create');
 });
 
 // ************company crud operation***********
@@ -27,7 +27,6 @@ Route::get('/displayCompanies',[companyController::class, 'show']);
 Route::get('/editCompanies/{id}',[companyController::class, 'edit']);
 Route::post('/editCompanies/update',[companyController::class, 'update']);
 Route::get('/deleteCompanies/{id}',[companyController::class, 'delete']);
-Route::post('/destroy/{id}',[companyController::class, 'destroy']);
 
 //*********Employee crud operation*****************
 

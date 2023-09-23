@@ -45,7 +45,7 @@ class employeeController extends Controller
             'firstname'=>'required',
             'lastname'=>'required',
             'email'=>'required|email|unique:App\Models\employee,email',
-            'phone'=>'required|digits:10|unique:App\Models\employee,phone',
+            'phone'=>'required',
             'company_id'=>'required',
             
         ]);

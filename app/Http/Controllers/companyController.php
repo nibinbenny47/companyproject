@@ -41,8 +41,8 @@ class companyController extends Controller
         //
         $this->validate($request,[
             'name'=>'required',
-            'email'=>'required',
-            'website'=>'required',
+            'email'=>'required|email|unique:App\Models\company,email',
+            'website'=>'required|url',
             
         ]);
   
@@ -117,14 +117,9 @@ class companyController extends Controller
     public function delete($id)
     {
         $company=company::find($id);
-        return view('company/delete',compact('company'));
-    }
-    public function destroy($id)
-    {
-        //
-        $company=company::find($id);
         $company->delete();
         return redirect('/displayCompanies');
     }
+   
    
 }

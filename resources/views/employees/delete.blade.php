@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+@include('header')
     <h1>delete Employees</h1>
     <form action="/destroy/{{$employee->id}}" method="post">
         @csrf

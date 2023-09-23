@@ -9,6 +9,7 @@
 </head>
 
 <body>
+@include('header')
     <h1>Edit Employees</h1>
     <form action="update" method="post">
         @csrf
@@ -27,7 +28,7 @@
             </tr>
             <tr>
                 <td>Phone</td>
-                <td><input type="text" name="phone" value="{{$employee->phone}}"></td>
+                <td><input type="text" name="phone" minlength="10" maxlength="10" value="{{$employee->phone}}"></td>
             </tr>
             <tr>
                 <td>Company</td>
